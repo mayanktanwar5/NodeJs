@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,300italic,300' rel='stylesheet' type='text/css" media="all">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./stylesheets/style.css">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+	<script type="text/javascript" src="./angularjs/travel.js"></script>
+	<script type="text/javascript" src="./angularjs/controllers/signup.js"></script>
+	<script type="text/javascript" src="./angularjs/controllers/login.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="travelController" >
+ 
+ <div class="container ">
+ 	
+	<div class="travel-menu">
+
+	<div class="row">
+		<h2> Plan your next travel</h2>
+	</div>
+	<div class="row">
+		
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+			<div class="form-group">
+				<label for="source" class="travel-label"> Source</label>
+				<select class="form-control" name="source" id="source" ng-model="travel.source">
+					<option value="San Jose"> San Jose</option>
+					<option value="San Francisco"> San Francisco</option>
+					<option value="Los Angeles">Los Angeles</option>
+					<option value="Las Vegas">Las Vegas</option>
+					<option value="New York">New York</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-6">
+			<div class="form-group">
+				<label for="destination" class="travel-label"> Destination</label>
+				<select class="form-control"  name="destination" ng-model="travel.destination" id="destination">
+					<option value="San Jose"> San Jose</option>
+					<option value="San Francisco"> San Francisco</option>
+					<option value="Los Angeles">Los Angeles</option>
+					<option value="Las Vegas">Las Vegas</option>
+					<option value="New York">New York</option>
+				</select>
+			</div>
+		</div>
+		<div class="row add">
+			<a ng-click="bookTravel()"  class="btn  btn-success">Add</a>
+		</div>
+		</div>
+
+	</div>	
+		
+	</div>
+<div class="travel-error" ng-show ="selecterror">
+		<h4> Both Source and destination  should be selected</h4>
+	</div>
+
+	<div class="travel-error" ng-show ="error">
+		<h3> Source and destination cannot be same please select different cities</h3>
+	</div>
+
+	<div class="travel-show" ng-show="allItems.length">
+		
+		<div class="row" ng-repeat="items in allItems" >
+
+
+			<div class="count col-md-2">
+				<label for=""> {{$index +1	}}</label>
+			</div>
+			<div class="source col-md-5 col-lg-5">
+				<label class="source-label">Source  : <p> {{items.src}}</p></label> 
+
+			</div>
+			<div class="destination col-md-5 col-lg-5">
+				<label class="destination-label">Destination : <p>{{items.des}}</p> </label>
+
+			</div>
+
+		</div>
+
+	</div>
+	
+
+ </div>
+	
+</body>
+</html>

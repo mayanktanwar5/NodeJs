@@ -1,0 +1,96 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.calc-menu
+{
+
+position:relative;
+margin-left:150px;
+height:250px;
+width:200px;
+
+}
+
+.display
+{
+
+	height:90px;
+	background:#131410;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	color:white;
+	 white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     white-space: pre-wrap;       /* css-3 */
+     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+     word-break: break-all;
+     white-space: normal;
+
+}
+
+.message-short
+{
+line-height: 120px;
+text-align: right;
+font-size: 30px;
+
+}
+.message-long
+{
+line-height: 30px;
+text-align: right;
+font-size: 20px;
+
+}
+
+
+.message-long-error
+{
+line-height: 30px;
+text-align: center;
+font-size: 15px;
+
+}
+.clear
+{
+	height:60px;
+	position: relative;
+	text-align: center;
+	line-height: 60px;
+	font-size:20px;
+	border:1px solid black;
+	cursor: pointer;
+	background: grey;
+}
+
+.number ,.operation
+{
+	height:60px;
+	position: relative;
+	text-align: center;
+	line-height: 60px;
+	font-size:15px;
+	border:1px solid black;
+	cursor: pointer;
+}
+.calc-menu label
+{
+	cursor: pointer;
+}
+
+.operation
+{
+background:orange;
+}
+
+.number
+{
+	background: grey;
+}
