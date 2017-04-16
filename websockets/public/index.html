@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <br>
+    <div class="panel panel-success text-center">
+        <div class="panel-heading">
+            <h1> To Get  Live Cricket Updates </h1>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <button class="btn btn-success" onclick="toggle('tuneIn')"> Tune In</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-danger" onclick="toggle('tuneOut')"> Tune Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="score-card panel panel-info ">
+        <div style="height:100px;" class="panel-heading text-center ">
+            <div class="col-md-6">
+                <h2>Current Score</h2>
+            </div>
+            <div class="col-md-6">
+                <h2 id="score"></h2>
+            </div>
+        </div>
+    </div>
+    <div class="panel score-card panel-warning">
+        <div style="height:100px;" class=" panel-heading">
+            <div class="text-center">
+                <h3 id="comment"></h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io('http://localhost:8080');
+
+    function toggle(status){
+
+        if(status=='tuneIn')
+        {
+            socket = io.connect('http://localhost:8080',{'forceNew':true});
+            socket.on('connect', function(msg){
+
+                socket.emit('tuneIn', function () {
+                    console.log("=======tunedIN======");
+                });
+
+                socket.on('matchScore', function(score){
+
+                    console.log(score);
+
+                    document.getElementById("comment").innerText=score.comment;
+                    document.getElementById("score").innerText=score.currentScore;
+                });
+            })
+
+
+        }
+        else if(status=="tuneOut")
+        {
+               socket.disconnect();
+        }
+
+    }
+</script>
+</body>
+</html>
